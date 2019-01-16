@@ -3,8 +3,9 @@ $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-    $("#articles").append("<button class='btn btn-sm btn-info' id='create-note'> make note");
+    // $("#articles").append("<p id='headline' data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    $("#articles").append("<p id='headline' data-id='" + data[i]._id + "'>" + data[i].title + "</p>");
+    $("#articles").append("<button class='btn btn-sm btn-info' id='create-note' data-toggle='modal' data-target='#note-modal'> make note");
     $("#articles").append("<button class='btn btn-sm btn-danger' id='delete-article'> delete");
     
     
@@ -27,6 +28,9 @@ $(document).on("click", "#create-note", function() {
     // With that done, add the note information to the page
     .then(function(data) {
       console.log(data);
+      // alert("make a modal")
+     
+      
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
