@@ -29,8 +29,7 @@ $(document).on("click", "#create-note", function() {
     .then(function(data) {
       console.log(data);
       // alert("make a modal")
-     
-      
+    
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title

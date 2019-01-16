@@ -40,34 +40,47 @@ app.get("/scrape", function(req, res) {
     var $ = cheerio.load(response.data);
 
     // Now, we grab every h2 within an article tag, and do the following:
-    $("h2.headline").each(function(i, element) {
+    $(".story-body").each(function(i, element) {
       // Save an empty result object
-      var result = {};
+        var result = {};
 
-      // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this)
-        .children("a")
-        .text();
-      result.link = $(this)
-        .children("a")
-        .attr("href");
+        // Add the text and href of every link, and save them as properties of the result object
+        result.title =$(this)
+          .children("h2")
+          .text()
+          // .replace(/ /g,'')
+          .replace(/(\r\n\t|\n|\r\t)/gm, "")
+        result.summary = $(this)
+          .children("p")
+          .text()
+          // .replace(/ /g,'')
+          // .replace(/\s/g,'')
+          .replace(/(\r\n\t|\n|\r\t)/gm, "")
+        result.link = $(this)
+          .children("h2")
+          .children("a")
+          .attr("href")
+          .replace(/ /g,'')
+          .replace(/(\r\n\t|\n|\r\t)/gm, "")
 
-      // Create a new Article using the `result` object built from scraping
-      db.Article.create(result)
-        .then(function(dbArticle) {
-          // View the added result in the console
-          console.log(dbArticle);
-        })
-        .catch(function(err) {
-          // If an error occurred, log it
-          console.log(err);
+          
+        db.Article.create(result)
+            .then(function(dbArticle) {
+              // View the added result in the console
+              console.log(dbArticle);
+            })
+            .catch(function(err) {
+              // If an error occurred, log it
+              console.log(err);
+            });
         });
-    });
+      })
+      // Create a new Article using the `result` object built from scraping
+     
 
     // Send a message to the client
     res.send("Scrape Complete");
   });
-});
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
