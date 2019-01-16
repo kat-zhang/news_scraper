@@ -14,3 +14,28 @@
 .btn-bar {
   margin-bottom: 32px;
 }
+#articles{
+  width: 980px;
+  border-color: black;
+  text-align: center;
+  background-color: lightgrey;
+  margin: auto;
+}
+
+#notes {
+  float: right;
+  width: 30%;
+}
+textarea, input {
+  display: block;
+  width: 100%;
+  background-color: #FCF5C7;
+}
+input {
+  height: 36px;
+  font-size: 24px;
+}
+textarea {
+  height: 200px;
+  font-size: 18px;
+}

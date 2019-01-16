@@ -3,6 +3,8 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 
 // Our scraping tools
+// Axios is a promised-based http library, similar to jQuery's Ajax method
+// It works on the client and on the server
 var axios = require("axios");
 var cheerio = require("cheerio");
 
@@ -25,13 +27,13 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/scrapeNYT", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/nytdb", { useNewUrlParser: true });
 
 // Routes
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
-  // First, we grab the body of the html with axios
+  // Grab desired html content with axios
   
   axios.get("http://www.nytimes.com/section/world").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -63,7 +65,7 @@ app.get("/scrape", function(req, res) {
     });
 
     // Send a message to the client
-    res.send("Scraping articles...");
+    res.send("Scrape Complete");
   });
 });
 

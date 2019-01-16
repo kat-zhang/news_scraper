@@ -1,42 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Scraping With Mongoose</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
     crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-  <title>News Scraper</title>
-</head>
-
-<body>
-  <div id="wrapper">
-    <div class="scraper-nav">
-      <h1 class="jumbotron text-center hdln">NEWSCRAPER</h1>
-      <ul class="nav justify-content-center btn-bar container">
-        <li class="nav-item">
-          <a href="/" class="btn btn-success n-btn" id="home" role="button">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="btn btn-success n-btn" id="saved" role="button">SAVED ARTICLES</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="btn btn-info n-btn"  id="scrape" role="button">NEW ARTICLES</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="btn btn-info n-btn" id="clear" role="button">CLEAR ARTICLES</a>
-        </li>
-      </ul>
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="scraper-nav">
+        <h1 class="jumbotron text-center hdln">NEWSCRAPER</h1>
+        <ul class="nav justify-content-center btn-bar container">
+          <li class="nav-item">
+            <a href="/" class="btn btn-success n-btn" id="home" role="button">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="btn btn-success n-btn" id="saved" role="button">SAVED ARTICLES</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="btn btn-info n-btn"  id="scrape" role="button">NEW ARTICLES</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="btn btn-info n-btn" id="clear" role="button">CLEAR ARTICLES</a>
+          </li>
+        </ul>
+    
+      <div id ="article-block">
+      <div id="articles"></div>
+  
+      <div id="notes"></div>
     </div>
-    <hr>
-    <div id="articles"></div>
-    <div id="notes"></div>
-  </div>
-</body>
-
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
+
+
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
