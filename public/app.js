@@ -6,7 +6,7 @@ $.getJSON("/articles", function(data) {
     
     $("#articles").append("<a  id='headline' href='" + data[i].link + "'>" + data[i].title + "</a>");
     $("#articles").append("<p class='summary'>" + data[i].summary +"</p>");
-    $("#articles").append("<br> <button class='btn btn-sm btn-dark' id='create-note' data-id='"+data[i]._id+"' > Notes");
+    $("#articles").append("<br> <button class='btn btn-sm btn-dark' id='create-note' data-id='" + data[i]._id + "' > Notes");
     $("#articles").append("<button class='btn btn-sm btn-success' id='save-me'> Save Article");
     $("#articles").append("<button class='btn btn-sm btn-danger' id='delete-article'> DELETE");
     $("#articles").append("<hr>");
@@ -34,12 +34,12 @@ $(document).on("click", "#create-note", function() {
       // alert("make a modal")
     
       // The title of the article
-      $("#notes").append("<h2>" + data.title + "</h2>");
+      $("#notes").append("<h6 id='note-title'>" + data.title + "</h6>");
       
       // A textarea to add a new note body
       $("#notes").append("<textarea id='bodyinput' name='body' class='form-control' rows='6'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='save-note'>Save Note</button>");
+      $("#notes").append("<button data-id='" + data._id + "' id='save-note' class='btn btn-sm btn-success'>Save Note</button>");
 
       // If there's a note in the article
       if (data.note) {

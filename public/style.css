@@ -52,3 +52,12 @@ textarea {
   margin-left: 60px;
   margin-right: 60px;
 }
+
+#note-title {
+  font-size: 14px;
+  font-style: italic;
+}
+
+#bodyinput {
+  margin-bottom: 10px;
+}
