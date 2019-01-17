@@ -4,9 +4,11 @@ $.getJSON("/articles", function(data) {
   for (var i = 0; i < data.length; i++) {
     
     
-    $("#articles").append("<a id='headline' href='" + data[i].link + "'>" + data[i].title + "</a>");
-    $("#articles").append("<br> <button class='btn btn-sm btn-info' id='create-note' data-toggle='modal' data-target='#note-modal'> make note");
-    $("#articles").append("<button class='btn btn-sm btn-danger' id='delete-article'> delete");
+    $("#articles").append("<a  id='headline' href='" + data[i].link + "'>" + data[i].title + "</a>");
+    $("#articles").append("<p class='summary'>" + data[i].summary +"</p>");
+    $("#articles").append("<br> <button class='btn btn-sm btn-dark' id='create-note' data-id='"+data[i]._id+"' > Notes");
+    $("#articles").append("<button class='btn btn-sm btn-success' id='save-me'> Save Article");
+    $("#articles").append("<button class='btn btn-sm btn-danger' id='delete-article'> DELETE");
     $("#articles").append("<hr>");
     
     
@@ -14,7 +16,7 @@ $.getJSON("/articles", function(data) {
 });
 
 
-// Whenever someone clicks a p tag
+
 $(document).on("click", "#create-note", function() {
   // Empty the notes from the note section
   $("#notes").empty();
@@ -81,3 +83,18 @@ $(document).on("click", "#save-note", function() {
 $(document).on("click", "#delete-article", function(){
   // alert("DELETE");
 });
+
+
+$("#clear-all").on("click", function() {
+  
+  $("#articles").empty();
+  
+});
+$("#delete-article").on("click", function() {
+  
+  $("#articles").empty();
+  
+});
+
+
+
