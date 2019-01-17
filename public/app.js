@@ -4,11 +4,11 @@ $.getJSON("/articles", function(data) {
   for (var i = 0; i < data.length; i++) {
     
     
-    $("#articles").append("<a  id='headline' href='" + data[i].link + "'>" + data[i].title + "</a>");
-    $("#articles").append("<p class='summary'>" + data[i].summary +"</p>");
+    $("#articles").append("<a   data-id='" + data._id + "' id='headline' href='" + data[i].link + "'>" + data[i].title + "</a>");
+    $("#articles").append("<p  data-id='" + data._id + "' class='summary'>" + data[i].summary +"</p>");
     $("#articles").append("<br> <button class='btn btn-sm btn-dark' id='create-note' data-id='" + data[i]._id + "' > Notes");
-    $("#articles").append("<button class='btn btn-sm btn-success' id='save-me'> Save Article");
-    $("#articles").append("<button class='btn btn-sm btn-danger' id='delete-article'> DELETE");
+    $("#articles").append("<button class='btn btn-sm btn-success' class='save-me'> Save Article");
+    $("#articles").append("<button data-id='" + data._id + "' class='btn btn-sm btn-danger' class='delete-article'> DELETE");
     $("#articles").append("<hr>");
     
     
@@ -18,27 +18,24 @@ $.getJSON("/articles", function(data) {
 
 
 $(document).on("click", "#create-note", function() {
-  // Empty the notes from the note section
+ 
   $("#notes").empty();
-  // Save the id from the p tag
+
   var thisId = $(this).attr("data-id");
 
-  // Now make an ajax call for the Article
   $.ajax({
     method: "GET",
     url: "/articles/" + thisId
   })
-    // With that done, add the note information to the page
+   
     .then(function(data) {
       console.log(data);
-      // alert("make a modal")
     
       // The title of the article
       $("#notes").append("<h6 id='note-title'>" + data.title + "</h6>");
       
       $("#notes").append("<input id='titleinput' name='title' placeholder='Note Title' class='form-control'>");
       $("#notes").append("<textarea id='bodyinput' name='body' class='form-control' rows='6'></textarea>");
-      // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button data-id='" + data._id + "' id='save-note' class='btn btn-sm btn-success'>Save Note</button>");
 
       // If there's a note in the article
@@ -67,34 +64,34 @@ $(document).on("click", "#save-note", function() {
       body: $("#bodyinput").val()
     }
   })
-    // With that done
     .then(function(data) {
-      // Log the response
-      console.log(data);
-      // Empty the notes section
+  
       $("#notes").empty();
     });
 
-  // Also, remove the values entered in the input and textarea for note entry
+  //Remove the values entered in the input areas
   $("#titleinput").val("");
   $("#bodyinput").val("");
 });
 
-$(document).on("click", "#delete-article", function(){
-  // alert("DELETE");
+$(".delete-article").on("click", function() {
+  // $("data-id='" + data._id + "'").hide();
+  // GET route
+  //Delete the article from the collection
 });
 
 
 $("#clear-all").on("click", function() {
-  
   $("#articles").empty();
+  //get route 
+  // Drop the collection from database
   
 });
-$("#delete-article").on("click", function() {
-  
-  $("#articles").empty();
-  
-});
+
+$(".save-me").on("click", function(){
+  //grab article realted content with matching attribute data-id values and 
+  // hide on the DOM, POST the same info to the saved page
+})
 
 
 
