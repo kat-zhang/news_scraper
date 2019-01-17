@@ -2,12 +2,12 @@
 $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
-    // $("#articles").append("<p id='headline' data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-    // $("#articles").append("<p id='headline' data-id='" + data[i]._id + "'>" + data[i].title + "</p>");
-    $("#articles").append("<a data-id='" + data[i]._id + "' id='headline' href='" + data[i].link + "'>" + data[i].title + "</a>");
-    $("#articles").append("<button class='btn btn-sm btn-info' id='create-note' data-toggle='modal' data-target='#note-modal'> make note");
+    
+    
+    $("#articles").append("<a id='headline' href='" + data[i].link + "'>" + data[i].title + "</a>");
+    $("#articles").append("<br> <button class='btn btn-sm btn-info' id='create-note' data-toggle='modal' data-target='#note-modal'> make note");
     $("#articles").append("<button class='btn btn-sm btn-danger' id='delete-article'> delete");
+    $("#articles").append("<hr>");
     
     
   }
@@ -33,10 +33,9 @@ $(document).on("click", "#create-note", function() {
     
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
-      // An input to enter a new title
-      $("#notes").append("<input id='titleinput' name='title' >");
+      
       // A textarea to add a new note body
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+      $("#notes").append("<textarea id='bodyinput' name='body' class='form-control' rows='6'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button data-id='" + data._id + "' id='save-note'>Save Note</button>");
 
