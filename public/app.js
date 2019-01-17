@@ -36,7 +36,7 @@ $(document).on("click", "#create-note", function() {
       // The title of the article
       $("#notes").append("<h6 id='note-title'>" + data.title + "</h6>");
       
-      // A textarea to add a new note body
+      $("#notes").append("<input id='titleinput' name='title' placeholder='Note Title' class='form-control'>");
       $("#notes").append("<textarea id='bodyinput' name='body' class='form-control' rows='6'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button data-id='" + data._id + "' id='save-note' class='btn btn-sm btn-success'>Save Note</button>");

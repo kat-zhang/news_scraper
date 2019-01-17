@@ -58,6 +58,6 @@ textarea {
   font-style: italic;
 }
 
-#bodyinput {
+#titleinput,#bodyinput {
   margin-bottom: 10px;
 }
